@@ -6,8 +6,9 @@
         <h4 class="card-title">
           <%= @recipe.name %>
         </h4>
-         <p> Instructions: <%= @recipe.instruction.name %></p>
-
+         <p> Instructions: <% @recipe.instructions.each do |instruction| %></p>
+          <ul><%= instruction.name %></ul>
+        <% end %>
         <p class="card-text"> Ingredients:</p>
         <% @recipe.ingredients.each do |ingredient| %>
         <ul><%= ingredient.name %></ul>

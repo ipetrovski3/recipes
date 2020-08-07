@@ -10,19 +10,15 @@
           </div>
           <%= f.fields_for :instructions do |instructions| %>
             <div class="form-group">
-              <ul>
-                <%= instructions.label :instructions, class:"label"%>
-                <%= instructions.text_area :name, class:"form-control" %>
-              <% end %>
-            </ul>
+              <%= instructions.label :instructions, class:"label"%>
+              <%= instructions.text_area :name, class:"form-control" %>
+            <% end %>
           </div>
           <%= f.fields_for :ingredients do |ingredients| %>
             <div class="form-group">
-              <ul>
-                <%= ingredients.label :ingredients, class:"label" %>
-                <%= ingredients.text_field :name, class:"form-control" %>
-                <%= ingredients.check_box :_destroy %> Delete
-              </ul>
+              <%= ingredients.label :ingredients, class:"label" %>
+              <%= ingredients.text_field :name, class:"form-control" %>
+              <%= ingredients.check_box :_destroy %> Delete
             </div>
           <% end %>
           <%= f.submit submit, class:"btn btn-primary" %>
