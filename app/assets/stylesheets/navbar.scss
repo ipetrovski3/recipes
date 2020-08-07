@@ -1,0 +1,33 @@
+#mainNav {
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 60px; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+  a:hover {
+    color: rgb(255, 255, 255);
+  }
+
+  .navbar-brand {
+    font-weight: 800;
+    color: hsla(0, 0%, 72%, 0.5);
+  }
+  .navbar-nav {
+    background-color: rgba(173, 173, 173, 0.404);
+
+    > li.nav-item {
+      > a {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: white;
+      }
+    }
+  }
+}
