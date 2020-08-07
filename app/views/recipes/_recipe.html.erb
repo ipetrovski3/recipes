@@ -1,0 +1,18 @@
+<div class="col-lg-4 col-md-6 mb-4 mt-3">
+  <div class="card h-100">
+    <%= link_to image_tag('http://placehold.it/700x400', class: "fit-image"), recipe_path(recipe) %>
+    <div class="card-body">
+      <h4 class="card-title">
+        <%= link_to recipe.name, recipe_path(recipe) %>
+      </h4>
+
+      <p class="card-text"> <% @instructions.each do |instruction| %>
+        <%= instruction.name %>
+        <% end %>
+        </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+    </div>
+  </div>
+</div>

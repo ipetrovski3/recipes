@@ -1,2 +1,21 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="row">
+  <div class="col-lg-4 col-md-6 mb-4">
+    <div class="card h-100">
+    <%= link_to image_tag('http://placehold.it/700x400', class: "fit-image"), recipe_path %>
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= @recipe.name %>
+        </h4>
+         <p> Instructions: <%= @recipe.instruction.name %></p>
+
+        <p class="card-text"> Ingredients:</p>
+        <% @recipe.ingredients.each do |ingredient| %>
+        <ul><%= ingredient.name %></ul>
+        <% end %>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+      </div>
+    </div>
+  </div>
+</div>
