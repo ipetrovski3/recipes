@@ -5,10 +5,15 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe.instructions.build
+    10.times { @recipe.ingredients.build }
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user = User.first
+
+    binding.pry
     if @recipe.save
       redirect_to @recipe
     else
@@ -36,6 +41,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :head_image)
+    params.require(:recipe).permit(:name, :head_image, instructions_attributes: [:name], ingredients_attributes: [:name, :_destroy])
   end
 end
