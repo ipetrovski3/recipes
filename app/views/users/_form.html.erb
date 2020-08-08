@@ -1,0 +1,31 @@
+<div class="page-wrapper bg-dark p-t-100">
+  <div class="wrapper wrapper--w900">
+    <div class="card card-6">
+      <div class="signup-form">
+        <h2><%= title %></h2>
+        <p class="hint-text"><%= subtitle %></p>
+        <%= form_with model: @user, local: true do |f| %>
+          <div class="form-group">
+            <%= f.text_field :name, class:"form-control", placeholder:"Full Name" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :handle_name, class:"form-control", placeholder:"Nickname" %>
+          </div>
+          <div class="form-group">
+            <%= f.email_field :mail, class:"form-control", placeholder:"Email" %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password, class:"form-control", placeholder:"Password" %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password_confirmation, class:"form-control", placeholder:"Confirm your password" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit submit, class:"btn btn-primary btn-lg btn-block" %>
+          </div>
+        <% end %>
+        <div class="text-center">Already have an account? <a href="#">Sign in</a></div>
+      </div>
+    </div>
+  </div>
+<br>
