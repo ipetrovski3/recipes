@@ -1,0 +1,9 @@
+<div class="container-flash">
+  <% flash.each do |name, msg| -%>
+    <div class="col-5">
+      <div class="alert text-center alert-<%= name %>">
+        <%= msg %>
+      </div>
+    </div>
+  <% end %>
+</div>
