@@ -80,6 +80,12 @@ div.home-page {
   margin-top: 80px;
 }
 
-.fit-image{
+.fit-image {
   width: 100%;
 }
+
+  a, a:hover, a:visited {
+    text-decoration-color: none;
+    text-decoration: none;
+    color: inherit
+  }

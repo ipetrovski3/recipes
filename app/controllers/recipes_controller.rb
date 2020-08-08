@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, except: %i[index new create]
+
   def index
     @recipes = Recipe.all
   end
@@ -13,7 +15,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user = User.first
 
-    binding.pry
     if @recipe.save
       redirect_to @recipe
     else
@@ -21,16 +22,14 @@ class RecipesController < ApplicationController
     end
   end
 
-  def show
-    @recipe = Recipe.find(params[:id])
-  end
+  def show; end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+    @recipe.instructions.first_or_create
+    5.times { @recipe.ingredients.build }
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to @recipe
     else
@@ -38,9 +37,22 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    recipe.destroy
+
+    redirect_to root_path
+  end
+
   private
 
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
+
   def recipe_params
-    params.require(:recipe).permit(:name, :head_image, instructions_attributes: [:name], ingredients_attributes: [:name, :_destroy])
+    params.require(:recipe).permit(:name,
+                                   :head_image,
+                                   instructions_attributes: %i[name id],
+                                   ingredients_attributes: %i[name _destroy id])
   end
 end
