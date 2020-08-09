@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_many :recipes, dependent: :destroy
 
+  has_one_attached :profile_picture
+
   before_save :mail_to_downcase
 
   validates :name, presence: true, length: { maximum: 30 }
