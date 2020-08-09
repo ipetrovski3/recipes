@@ -1,3 +1,157 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.user {
+  margin-top: 65px;
+}
+
+.view-account {
+  background:#FFFFFF;
+  margin-top:20px;
+}
+.view-account .pro-label {
+  font-size: 13px;
+  padding: 4px 5px;
+  position: relative;
+  top: -5px;
+  margin-left: 10px;
+  display: inline-block
+}
+
+.view-account .side-bar {
+  padding-bottom: 30px
+}
+
+.view-account .side-bar .user-info {
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 30px;
+  color: #616670;
+  border-bottom: 1px solid #f3f3f3
+}
+
+.view-account .side-bar .user-info .img-profile {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 15px
+}
+
+.view-account .side-bar .user-info .meta li {
+  margin-bottom: 10px
+}
+
+.view-account .side-bar .user-info .meta li span {
+  display: inline-block;
+  width: 100px;
+  margin-right: 5px;
+  text-align: right
+}
+
+.view-account .side-bar .user-info .meta li a {
+  color: #616670
+}
+
+.view-account .side-bar .user-info .meta li.activity {
+  color: #a2a6af
+}
+
+.view-account .side-bar .side-menu {
+  text-align: center
+}
+
+
+.view-account .content-panel {
+  padding: 30px
+}
+
+.view-account .content-panel .title {
+  margin-bottom: 15px;
+  margin-top: 0;
+  font-size: 18px
+}
+
+.view-account .content-panel .fieldset-title {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaf1;
+  margin-bottom: 30px;
+  color: #616670;
+  font-size: 16px
+}
+
+.view-account .content-panel .avatar .figure img {
+  float: right;
+  width: 64px
+}
+
+.view-account .content-panel .content-header-wrapper {
+  position: relative;
+  margin-bottom: 30px
+}
+
+.view-account .content-panel .content-header-wrapper .actions {
+  position: absolute;
+  right: 0;
+  top: 0
+}
+
+.view-account .content-panel .content-utilities {
+  position: relative;
+  margin-bottom: 30px
+}
+
+.view-account .content-panel .content-utilities .btn-group {
+  margin-right: 5px;
+  margin-bottom: 15px
+}
+
+.view-account .content-panel .content-utilities .fa {
+  font-size: 16px;
+  margin-right: 0
+}
+
+.view-account .content-panel .content-utilities .page-nav {
+  position: absolute;
+  right: 0;
+  top: 0
+}
+
+.drive-wrapper {
+  padding: 15px;
+  background: #f5f5f5;
+  overflow: hidden
+}
+  .view-account .content-panel .avatar .figure img {
+      float: none;
+      margin-bottom: 15px
+  }
+  .view-account .file-uploader {
+      margin-bottom: 15px
+  }
+  .view-account .mail-subject {
+      max-width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+  }
+  .view-account .content-panel .mails-wrapper .mail-item .time-container {
+      position: static
+  }
+  .view-account .content-panel .mails-wrapper .mail-item .time-container .time {
+      width: auto;
+      text-align: left
+  }
+
+
+@media (min-width:768px) {
+  .view-account .side-bar .user-info {
+      padding: 0;
+      padding-bottom: 15px
+  }
+  .view-account .mail-subject .subject {
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+  }
+
+}

@@ -1,0 +1,49 @@
+<div class="container user">
+  <div class="view-account">
+    <section class="module">
+      <div class="module-inner">
+        <div class="side-bar">
+          <div class="user-info">
+            <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+            <ul class="meta list list-unstyled">
+              <li class="name">Full Name: <strong><%= @user.name %></strong></li>
+              <li class="name">Nickname: <strong><%= @user.name %></strong></li>
+              <li class="email">Email: <strong><%= @user.mail %></strong></li>
+              <li class="activity"> Recipes: <strong><%= @user.recipes.count %></strong></li>
+            </ul>
+          </div>
+          <% if same_user?(@user) %>
+            <div class="btn-group">
+             <%= link_to 'New Recipe', new_recipe_path, class:'btn btn-primary' %>
+             <%= link_to 'Edit Profile', edit_user_path, class:'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+        <div class="content-panel">
+          <div class="content-header-wrapper">
+            <% if same_user?(@user) %>
+              <h2 class="title"><%= "My Recipes:" %></h2>
+            <% else %>
+              <h2 class="title"><%= "#{@user.name} Recipes:" %></h2>
+            <% end %>
+          </div>
+          <div class="drive-wrapper drive-list-view">
+            <div class="table-responsive drive-items-table-wrapper">
+              <table class="table">
+                <% if @user.recipes.any? %>
+                  <tbody>
+                    <% @user.recipes.each do |r| %>
+                      <tr>
+                        <td><%= link_to r.name, recipe_path(r) %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
