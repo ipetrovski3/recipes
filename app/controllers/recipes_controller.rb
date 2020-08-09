@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  skip_before_action :require_login, only: %i[index show]
   before_action :set_recipe, except: %i[index new create]
 
   def index
@@ -13,7 +14,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user = User.first
+    @recipe.user = current_user
 
     if @recipe.save
       redirect_to @recipe
@@ -25,11 +26,21 @@ class RecipesController < ApplicationController
   def show; end
 
   def edit
+    unless same_user(@recipe.user)
+      flash[:danger] = 'Wrong User'
+      redirect_to(root_path) and return
+    end
+
     @recipe.instructions.first_or_create
     5.times { @recipe.ingredients.build }
   end
 
   def update
+    unless same_user(@recipe.user)
+      flash[:danger] = 'Wrong User'
+      redirect_to(root_path) and return
+    end
+
     if @recipe.update(recipe_params)
       redirect_to @recipe
     else
@@ -38,9 +49,15 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    recipe.destroy
+    recipe = Recipe.find(params[:id])
 
-    redirect_to root_path
+    if same_user?(recipe.user)
+      recipe.destroy
+      redirect_to root_path
+    else
+      flash[:danger] = 'Wrong User'
+      redirect_to(root_path) and return
+    end
   end
 
   private
