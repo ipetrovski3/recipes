@@ -91,3 +91,27 @@ div.home-page {
     text-decoration-color: none;
     text-decoration: none;
   }
+
+  .rec {
+    background-color: rgba(63, 62, 62, 0.438);
+    color: white;
+    margin-top: 200px;
+  }
+
+  .recimg {
+    background-repeat:no-repeat;
+    background-size:cover;
+    padding-bottom: 180px;
+  }
+
+  .card-footer {
+    background-color: rgba(255, 255, 255, 0.836);
+  }
+.mainr {
+  background-color: rgba(255, 255, 255, 0.596);
+  >   a, a:hover, a:visited {
+    color: black;
+    text-decoration-color: none;
+    text-decoration: none;
+  }
+}
