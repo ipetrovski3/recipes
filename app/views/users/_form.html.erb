@@ -6,7 +6,8 @@
         <p class="hint-text"><%= subtitle %></p>
         <%= form_with model: @user, local: true do |f| %>
           <div class="form-group">
-            <%= f.text_field :name, class:"form-control", placeholder:"Full Name" %>
+            <%= f.text_field :first_name, class:"form-control", placeholder:"First Name" %>
+            <%= f.text_field :last_name, class:"form-control", placeholder:"Last Name" %>
           </div>
           <div class="form-group">
             <%= f.text_field :handle_name, class:"form-control", placeholder:"Nickname" %>
@@ -24,7 +25,7 @@
             <%= f.submit submit, class:"btn btn-primary btn-lg btn-block" %>
           </div>
         <% end %>
-        <div class="text-center">Already have an account? <a href="#">Sign in</a></div>
+        <div class="text-center"> Already have an account? | <strong><%= link_to 'Login', login_path, class:"log" %></strong> </div>
       </div>
     </div>
   </div>

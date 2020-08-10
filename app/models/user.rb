@@ -9,12 +9,17 @@ class User < ApplicationRecord
 
   before_save :mail_to_downcase
 
-  validates :name, presence: true, length: { maximum: 30 }
+  validates :first_name, presence: true, length: { maximum: 30 }
+  validates :last_name, presence: true, length: { maximum: 30}
   validates :handle_name, presence: true
   validates :mail, presence: true, length: { maximum: 50 },
                    format: { with: VALID_EMAIL_REGEX },
                    uniqueness: true
   validates :password, length: { minimum: 6 }
+
+  def name
+    [first_name, last_name].join(' ')
+  end
 
   private
 
