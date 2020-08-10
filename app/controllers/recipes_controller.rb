@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
   def show; end
 
   def edit
-    unless same_user(@recipe.user)
+    unless same_user?(@recipe.user)
       flash[:danger] = 'Wrong User'
       redirect_to(root_path) and return
     end
@@ -36,7 +36,7 @@ class RecipesController < ApplicationController
   end
 
   def update
-    unless same_user(@recipe.user)
+    unless same_user?(@recipe.user)
       flash[:danger] = 'Wrong User'
       redirect_to(root_path) and return
     end

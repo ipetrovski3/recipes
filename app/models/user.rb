@@ -10,7 +10,7 @@ class User < ApplicationRecord
   before_save :mail_to_downcase
 
   validates :first_name, presence: true, length: { maximum: 30 }
-  validates :last_name, presence: true, length: { maximum: 30}
+  validates :last_name, presence: true, length: { maximum: 30 }
   validates :handle_name, presence: true
   validates :mail, presence: true, length: { maximum: 50 },
                    format: { with: VALID_EMAIL_REGEX },

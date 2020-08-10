@@ -3,7 +3,7 @@
     <div class="col-lg-4 col-md-6 mb-4">
       <div class="card h-100 rec">
         <div class="card-body">
-          <h2 class="card-title">
+          <h2 class="card-title text-center">
             <strong><%= @recipe.name %></strong>
           </h4>
           <p> Instructions: <% @recipe.instructions.each do |instruction| %></p>
@@ -16,6 +16,15 @@
         </div>
         <div class="card-footer">
           <small class="text-muted"><%= "Created at: #{@recipe.created_at.strftime("%d.%m.%Y, %H:%M")} "%></small>
+          <% if same_user?(@recipe.user) %>
+            <div class="btn-group ml-5">
+              <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class:'btn btn-secondary' %>
+              <%= link_to 'Delete Recipe', recipe_path(@recipe), method: :delete, class:'btn btn-secondary' %>
+            <% else %>
+              <%= link_to "View #{@recipe.user.first_name} Profile Page", user_path(@recipe.user), class:'btn btn-secondary ml-1' %>
+              <%= link_to 'Back', root_path, class:'btn btn-secondary' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

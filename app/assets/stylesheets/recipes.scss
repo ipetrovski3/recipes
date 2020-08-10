@@ -111,9 +111,13 @@ div.home-page {
   }
 .mainr {
   background-color: rgba(255, 255, 255, 0.596);
-  >   a, a:hover, a:visited {
+  > a, a:hover, a:visited {
     color: black;
     text-decoration-color: none;
     text-decoration: none;
   }
+}
+
+.card-title {
+  text-transform: uppercase;
 }
