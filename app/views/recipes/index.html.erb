@@ -18,7 +18,7 @@
                     </h4>
                     <p>
                       <p> Instructions: <% recipe.instructions.each do |instruction| %></p>
-                        <ul><%= link_to (instruction.name).truncate(50), recipe_path(recipe) %></ul>
+                        <ul><%= link_to (instruction.name).truncate(70), recipe_path(recipe) %></ul>
                       <% end %>
                     </p>
                   </div>
