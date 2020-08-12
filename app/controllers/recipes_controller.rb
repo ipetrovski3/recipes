@@ -70,6 +70,6 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:name,
                                    :image,
                                    instructions_attributes: %i[name id _destroy],
-                                   ingredients_attributes: %i[name _destroy id])
+                                   ingredients_attributes: %i[name id _destroy])
   end
 end

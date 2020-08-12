@@ -3,7 +3,7 @@
     <div class="post-heading">
       <h1><%= title %> Recipe</h1>
     </div>
-    <%= form_with model: @recipe, local: true do |f| %>
+    <%= form_with model: @recipe do |f| %>
       <div class="form-group">
         <%= f.label :name, class:"label"%>
         <%= f.text_field :name, class:"form-control" %>
@@ -12,56 +12,20 @@
         <%= f.label :image, class:"label" %>
         <%= f.file_field :image, class:"form-control-file" %>
       </div>
+      Preparations order:
+      <%= f.fields_for :instructions do |instruction| %>
+        <%= instruction.text_area :name %>
+        <%= instruction.check_box :_destroy %> Delete
+      <% end %>
+      Ingredients:</ul>
+    <%= f.fields_for :ingredients do |ingredient| %>
+      <%= ingredient.text_field :name %>
+      <%= ingredient.check_box :_destroy %> Delete
+    <% end %>
+    <div class="form-group">
+      <%= f.submit submit, class:"btn btn-primary btn-block" %>
+      <%= link_to 'Cancel', root_path, class:"btn btn-danger btn-block" %>
     </div>
-    <div class="row">
-      <div class="col">
-        <div class="col-xs-6">
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <tr>
-                <th>Preparations order:</th>
-              </tr>
-              <%= f.fields_for :instructions do |instruction| %>
-                <tr>
-                  <td>
-                    <%= instruction.text_area :name %>
-                    <% if local_assigns[:edit] %>
-                      <%= instruction.check_box :_destroy %> Delete
-                    <% end %>
-                  <% end %>
-                </td>
-              </tr>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="col-xs-6">
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <tr>
-              <th>Ingredients:</th>
-            </tr>
-            <tr>
-              <%= f.fields_for :ingredients do |ingredient| %>
-                <tr>
-                  <td>
-                    <%= ingredient.text_field :name %>
-                    <% if local_assigns[:edit] %>
-                      <%= ingredient.check_box :_destroy %> Delete
-                    <% end %>
-                  <% end %>
-                </td>
-              </tr>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <%= f.submit submit, class:"btn btn-primary btn-block" %>
-  <%= link_to 'Cancel', root_path, class:"btn btn-danger btn-block" %>
-<% end %>
+  <% end %>
 </div>
 </div>
