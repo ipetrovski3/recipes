@@ -17,7 +17,23 @@ end
 6.times do |i|
   recipe = Recipe.create(name: Faker::Food.dish,
                          user_id: 1,
-                         instructions_attributes: [name: Faker::Food.description],
+                         instructions_attributes: [
+                           {
+                             name: Faker::Food.metric_measurement
+                           },
+                           {
+                             name: Faker::Food.metric_measurement
+                           },
+                           {
+                             name: Faker::Food.metric_measurement
+                           },
+                           {
+                             name: Faker::Food.metric_measurement
+                           },
+                           {
+                             name: Faker::Food.metric_measurement
+                           }
+                         ],
                          ingredients_attributes: [
                            {
                              name: Faker::Food.ingredient
@@ -37,3 +53,5 @@ end
                          ])
   recipe.image.attach(io: open('https://picsum.photos/1920/1080'), filename: "#{i}_recipe_image.jpg")
 end
+
+puts "You've successfully seeded the database"

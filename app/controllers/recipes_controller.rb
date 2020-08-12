@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.instructions.build
+    10.times { @recipe.instructions.build }
     10.times { @recipe.ingredients.build }
   end
 
@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
       redirect_to(root_path) and return
     end
 
-    @recipe.instructions.first_or_create
+    5.times { @recipe.instructions.build }
     5.times { @recipe.ingredients.build }
   end
 
@@ -69,7 +69,7 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name,
                                    :image,
-                                   instructions_attributes: %i[name id],
+                                   instructions_attributes: %i[name id _destroy],
                                    ingredients_attributes: %i[name _destroy id])
   end
 end

@@ -16,11 +16,6 @@
                     <h4 class="card-title">
                       <%= link_to recipe.name, recipe_path(recipe) %>
                     </h4>
-                    <p>
-                      <p> Instructions: <% recipe.instructions.each do |instruction| %></p>
-                        <ul><%= link_to (instruction.name).truncate(70), recipe_path(recipe) %></ul>
-                      <% end %>
-                    </p>
                   </div>
                   <div class="card-footer">
                     <small class="text-muted"><%= "Created at: #{recipe.created_at.strftime("%d.%m.%Y, %H:%M")} | by: #{recipe.user.name}"%></small>
