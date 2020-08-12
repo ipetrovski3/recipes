@@ -1,0 +1,15 @@
+<div class="container form-recipes">
+  <div class="col-4 col-md-5 mx-auto">
+    <%= form_with model: @recipe, local: true  do |f| %>
+      <p>Ingredients:</p>
+      <%= f.fields_for :ingredients do |ingredient| %>
+        <%= ingredient.text_field :name %>
+        <%= ingredient.check_box :_destroy %> Delete
+      <% end %>
+      <div class="form-group">
+        <%= f.submit "Edit", class:"btn btn-primary btn-block" %>
+        <%= link_to 'Cancel', root_path, class:"btn btn-danger btn-block" %>
+      </div>
+    <% end %>
+  </div>
+</div>

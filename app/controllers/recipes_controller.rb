@@ -60,6 +60,48 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit_ingredients
+    unless same_user?(@recipe.user)
+      flash[:danger] = 'Wrong User'
+      redirect_to(root_path) and return
+    end
+
+    5.times { @recipe.ingredients.build }
+  end
+
+  def update_ingredients
+    unless same_user?(@recipe.user)
+      flash[:danger] = 'Wrong User'
+      redirect_to(root_path) and return
+    end
+    if @recipe.ingredients.update(ingredient_params)
+      redirect_to @recipe
+    else
+      render :edit_ingredients
+    end
+  end
+
+  def edit_instructions
+    unless same_user?(@recipe.user)
+      flash[:danger] = 'Wrong User'
+      redirect_to(root_path) and return
+    end
+
+    5.times { @recipe.instructions.build }
+  end
+
+  def update_instructions
+    unless same_user?(@recipe.user)
+      flash[:danger] = 'Wrong User'
+      redirect_to(root_path) and return
+    end
+    if @recipe.instructions.update(instruction_params)
+      redirect_to @recipe
+    else
+      render :edit_instructions
+    end
+  end
+
   private
 
   def set_recipe
@@ -69,7 +111,16 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name,
                                    :image,
+                                   :description,
                                    instructions_attributes: %i[name id _destroy],
                                    ingredients_attributes: %i[name id _destroy])
+  end
+
+  def ingredient_params
+    params.permit(:name)
+  end
+
+  def instruction_params
+    params.permit(:name)
   end
 end

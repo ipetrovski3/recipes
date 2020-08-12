@@ -3,7 +3,7 @@
     <div class="post-heading">
       <h1><%= title %> Recipe</h1>
     </div>
-    <%= form_with model: @recipe do |f| %>
+    <%= form_with model: @recipe, local: true  do |f| %>
       <div class="form-group">
         <%= f.label :name, class:"label"%>
         <%= f.text_field :name, class:"form-control" %>
@@ -12,20 +12,24 @@
         <%= f.label :image, class:"label" %>
         <%= f.file_field :image, class:"form-control-file" %>
       </div>
-      Preparations order:
+      <div class="form-group">
+        <%= f.label :description, class:"label"%>
+        <%= f.text_area :description, class:"form-control" %>
+      </div>
+      <p>Preparations order:</p>
       <%= f.fields_for :instructions do |instruction| %>
-        <%= instruction.text_area :name %>
+        <%= instruction.text_field :name %>
         <%= instruction.check_box :_destroy %> Delete
       <% end %>
-      Ingredients:</ul>
-    <%= f.fields_for :ingredients do |ingredient| %>
-      <%= ingredient.text_field :name %>
-      <%= ingredient.check_box :_destroy %> Delete
+      <p>Ingredients:</p>
+      <%= f.fields_for :ingredients do |ingredient| %>
+        <%= ingredient.text_field :name %>
+        <%= ingredient.check_box :_destroy %> Delete
+      <% end %>
+      <div class="form-group">
+        <%= f.submit submit, class:"btn btn-primary btn-block" %>
+        <%= link_to 'Cancel', root_path, class:"btn btn-danger btn-block" %>
+      </div>
     <% end %>
-    <div class="form-group">
-      <%= f.submit submit, class:"btn btn-primary btn-block" %>
-      <%= link_to 'Cancel', root_path, class:"btn btn-danger btn-block" %>
-    </div>
-  <% end %>
-</div>
+  </div>
 </div>

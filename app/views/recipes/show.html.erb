@@ -1,4 +1,4 @@
-<div class="container-fluid recimg" style="background-image: url(<%= rails_blob_url(@recipe.image) %>)">
+<div class="container-fluid recimg" style="background-image: url(<%= rails_blob_url(@recipe.image) if @recipe.image.present? %>)">
   <div class="row">
     <div class="col-lg-4 col-md-6 mb-4">
       <div class="card h-100 rec">
@@ -6,17 +6,21 @@
           <h2 class="card-title text-center">
             <strong><%= @recipe.name %></strong>
           </h4>
+          <strong>Description:</strong>
+          <p> <%= @recipe.description %> </p>
           <p>
             <p> Instructions:
               <ol class="rectangle-list"> <% @recipe.instructions.each do |instruction| %></p>
                 <li><%= link_to instruction.name, user_path(@recipe.user) %></li>
               <% end %>
             </ol>
+            <%= link_to 'Edit Instructions', edit_instructions_path, class:'btn btn-secondary' if same_user?(@recipe.user) %>
           </p>
           <p class="card-text"> Ingredients:</p>
           <% @recipe.ingredients.each do |ingredient| %>
             <ul><%= ingredient.name %></ul>
           <% end %>
+          <%=  link_to 'Edit Ingredients', edit_ingredients_path, class:'btn btn-secondary' if same_user?(@recipe.user) %>
         </div>
         <div class="card-footer">
           <small class="text-muted"><%= "Created at: #{@recipe.created_at.strftime("%d.%m.%Y, %H:%M")} "%></small>
@@ -32,5 +36,5 @@
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 </div>
