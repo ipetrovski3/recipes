@@ -3,10 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :recipes do
-    resources :ingredients
-    resources :instructions
-  end
+  resources :recipes
 
   get '/recipes/:id/edit_ingredients', to: 'recipes#edit_ingredients', as: :edit_ingredients
   patch '/recipes/:id', to: 'recipes#update_ingredients'
