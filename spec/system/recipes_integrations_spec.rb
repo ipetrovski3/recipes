@@ -19,6 +19,7 @@ RSpec.describe 'RecipesIntegrations', type: :system do
   describe 'Creating a Recipe' do
     it 'creates and shows the newly created Recipe' do
       name = 'Create new system spec'
+      description = 'Description'
       instructions = 'This is the instruction'
       ingredients = 'This is the ingredient'
       within('nav') do
@@ -27,11 +28,13 @@ RSpec.describe 'RecipesIntegrations', type: :system do
 
       within('form') do
         fill_in 'recipe_name', with: name
+        fill_in 'recipe_description', with: description
         fill_in 'recipe_instructions_attributes_0_name', with: instructions
         fill_in 'recipe_ingredients_attributes_0_name', with: ingredients
         click_on 'Create'
       end
       expect(page).to have_content(name)
+      expect(page).to have_content(description)
       expect(page).to have_content(ingredients)
       expect(page).to have_content(instructions)
     end
@@ -40,17 +43,20 @@ RSpec.describe 'RecipesIntegrations', type: :system do
   describe 'Editing an recipe' do
     it 'edits and shows the recipe' do
       name = 'Edit system spec'
+      description = 'Description'
       instructions = 'This is the edited instruction'
       ingredients = 'This is the edited ingredient'
       visit recipe_path(recipe)
       click_on 'Edit Recipe'
       within('form') do
         fill_in 'recipe_name', with: name
+        fill_in 'recipe_description', with: description
         fill_in 'recipe_instructions_attributes_0_name', with: instructions
         fill_in 'recipe_ingredients_attributes_0_name', with: ingredients
         click_on 'Edit Recipe'
       end
       expect(page).to have_content(name)
+      expect(page).to have_content(description)
       expect(page).to have_content(ingredients)
       expect(page).to have_content(instructions)
     end

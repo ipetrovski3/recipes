@@ -3,6 +3,7 @@ FactoryBot.define do
     user
 
     name { 'Grilled Pork Ribs' }
+    description { 'very very tasty'}
 
     factory :instructions do
       name { 'bla bla bla' }

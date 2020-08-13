@@ -11,5 +11,9 @@ RSpec.describe Recipe do
     it { is_expected.to accept_nested_attributes_for(:ingredients) }
     it { is_expected.to accept_nested_attributes_for(:instructions) }
   end
-end
 
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:description)}
+  end
+end
