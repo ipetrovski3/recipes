@@ -4,7 +4,11 @@
       <div class="module-inner">
         <div class="side-bar">
           <div class="user-info">
-            <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+           <% if @user.profile_picture.present? %>
+            <%= image_tag @user.profile_picture, class:'img-profile img-circle img-responsive center-block' %>
+          <% else %>
+            <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+          <% end %>
             <ul class="meta list list-unstyled">
               <li class="name">Full Name: <strong><%= @user.name %></strong></li>
               <li class="name">Nickname: <strong><%= @user.handle_name %></strong></li>
