@@ -7,23 +7,51 @@
         <%= form_with model: @user, local: true do |f| %>
           <div class="form-group">
             <%= f.text_field :first_name, class:"form-control", placeholder:"First Name" %>
+              <% @user.errors.full_messages_for(:first_name).each do |msg| if @user.errors.any? %>
+                <small class="form-text text-danger"><%= msg %> </small>
+              <% end %>
+              <% end %>
             <%= f.text_field :last_name, class:"form-control", placeholder:"Last Name" %>
+              <% @user.errors.full_messages_for(:last_name).each do |msg| if @user.errors.any? %>
+                <small class="form-text text-danger"><%= msg %> </small>
+              <% end %>
+              <% end %>
           </div>
           <div class="form-group">
             <%= f.text_field :handle_name, class:"form-control", placeholder:"Nickname" %>
+              <% @user.errors.full_messages_for(:handle_name).each do |msg| if @user.errors.any? %>
+                <small class="form-text text-danger"><%= msg %> </small>
+            <% end %>
+            <% end %>
           </div>
           <div class="form-group">
             <%= f.label :profile_picture, class:'label' %>
             <%= f.file_field :profile_picture, class:"form-control-file" %>
+               <% @user.errors.full_messages_for(:profile_picture).each do |msg| if @user.errors.any? %>
+                <small class="form-text text-danger"><%= msg %> </small>
+            <% end %>
+            <% end %>
           </div>
           <div class="form-group">
             <%= f.email_field :mail, class:"form-control", placeholder:"Email" %>
+               <% @user.errors.full_messages_for(:mail).each do |msg| if @user.errors.any? %>
+                <small class="form-text text-danger"><%= msg %> </small>
+            <% end %>
+            <% end %>
           </div>
           <div class="form-group">
             <%= f.password_field :password, class:"form-control", placeholder:"Password" %>
+              <% @user.errors.full_messages_for(:password).each do |msg| if @user.errors.any? %>
+               <small class="form-text text-danger"><%= msg %> </small>
+              <% end %>
+              <% end %>
           </div>
           <div class="form-group">
             <%= f.password_field :password_confirmation, class:"form-control", placeholder:"Confirm your password" %>
+              <% @user.errors.full_messages_for(:password_confirmation).each do |msg| if @user.errors.any? %>
+               <small class="form-text text-danger"><%= msg %> </small>
+            <% end %>
+            <% end %>
           </div>
           <div class="form-group">
             <%= f.submit submit, class:"btn btn-primary btn-lg btn-block" %>
