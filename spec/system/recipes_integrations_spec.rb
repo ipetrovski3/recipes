@@ -46,8 +46,10 @@ RSpec.describe 'RecipesIntegrations', type: :system do
       description = 'Description'
       instructions = 'This is the edited instruction'
       ingredients = 'This is the edited ingredient'
+
       visit recipe_path(recipe)
       click_on 'Edit Recipe'
+
       within('form') do
         fill_in 'recipe_name', with: name
         fill_in 'recipe_description', with: description
@@ -55,18 +57,66 @@ RSpec.describe 'RecipesIntegrations', type: :system do
         fill_in 'recipe_ingredients_attributes_0_name', with: ingredients
         click_on 'Edit Recipe'
       end
+
       expect(page).to have_content(name)
       expect(page).to have_content(description)
       expect(page).to have_content(ingredients)
       expect(page).to have_content(instructions)
     end
+
+    it 'edits just the instructions of recipe' do
+      instructions = 'only edits this instruction'
+
+      visit recipe_path(recipe)
+      click_on('Edit Instructions')
+
+      within('form') do
+        fill_in 'recipe_instructions_attributes_0_name', with: instructions
+        click_on 'Edit'
+      end
+      expect(page).to have_content(instructions)
+    end
   end
 
-  describe 'Deleting an recipe' do
+  it 'edits just the ingredients of recipe' do
+    ingredients = 'only edits this ingredient'
+
+    visit recipe_path(recipe)
+    click_on('Edit Ingredients')
+
+    within('form') do
+      fill_in 'recipe_ingredients_attributes_0_name', with: ingredients
+      click_on 'Edit'
+    end
+    expect(page).to have_content(ingredients)
+  end
+
+  describe 'Deleting an recipe or its content' do
     it 'deletes the recipe and redirect to index view' do
       visit recipe_path(recipe)
       click_on 'Delete Recipe'
       expect(page).to have_content('Recipes')
     end
+
+    it 'deletes the recipe instruction' do
+      visit recipe_path(recipe)
+      click_on 'Edit Instructions'
+      check 'recipe_instructions_attributes_0__destroy'
+
+      click_on 'Edit'
+
+      expect(page).to have_content('Recipe')
+    end
+
+    it 'deletes the recipe ingredient' do
+      visit recipe_path(recipe)
+      click_on 'Edit Ingredients'
+      check 'recipe_ingredients_attributes_0__destroy'
+
+      click_on 'Edit'
+
+      expect(page).to have_content('Recipe')
+    end
+
   end
 end
