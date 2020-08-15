@@ -31,7 +31,7 @@ Request
 ## Contributing
 
 Feel free to contribute to the app by submitting pull requests to me.
-https://github.com/ipetrovski3/recepies
+https://github.com/ipetrovski3/recipes
 
 
 ## Author
