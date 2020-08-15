@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   before_action :set_recipe, except: %i[index new create]
-  before_action :check_user, except: %i[index new create]
+  before_action :check_user, except: %i[index new create show]
 
   def index
     @recipes = Recipe.all
@@ -49,7 +49,7 @@ class RecipesController < ApplicationController
   end
 
   def update_ingredients
-    if @recipe.ingredients.update(ingredient_params)
+    if @recipe.ingredients.update(other_params)
       redirect_to @recipe
     else
       render :edit_ingredients
@@ -61,7 +61,7 @@ class RecipesController < ApplicationController
   end
 
   def update_instructions
-    if @recipe.instructions.update(instruction_params)
+    if @recipe.instructions.update(other_params)
       redirect_to @recipe
     else
       render :edit_instructions
@@ -82,11 +82,7 @@ class RecipesController < ApplicationController
                                    ingredients_attributes: %i[name id _destroy])
   end
 
-  def ingredient_params
-    params.permit(:name)
-  end
-
-  def instruction_params
+  def other_params
     params.permit(:name)
   end
 
