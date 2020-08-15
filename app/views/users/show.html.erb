@@ -5,7 +5,7 @@
         <div class="side-bar">
           <div class="user-info">
            <% if @user.profile_picture.present? %>
-            <%= image_tag @user.profile_picture, class:'img-profile img-circle img-responsive center-block' %>
+            <%= image_tag @user.profile_picture, class:'img-profile' %>
           <% else %>
             <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar6.png">
           <% end %>
