@@ -1,3 +1,4 @@
+
 <div class="container-fluid recimg" style="background-image: url(<%= rails_blob_url(@recipe.image) if @recipe.image.present? %>)">
   <div class="row">
     <div class="col-lg-4 col-md-6 mb-4">
@@ -38,3 +39,6 @@
     </div>
   </div>
 </div>
+<% content_for :title do  %>
+  <% "Recipe - #{@recipe.name}" %>
+<% end %>
