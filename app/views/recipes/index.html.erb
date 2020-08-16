@@ -8,27 +8,7 @@
             </div>
           </div>
           <div class="row">
-            <% @recipes.each do |recipe| %>
-              <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 mainr">
-                  <%= link_to image_tag(recipe.image, class: "fit-image"), recipe_path(recipe) if recipe.image.attached? %>
-                  <%= link_to recipe_path(recipe) do %>
-                    <div class="card-body">
-                      <h4 class="card-title">
-                        <%= recipe.name %>
-                      </h4>
-                      <p>Description:
-                        <%= (recipe.description).truncate(50) %></p>
-                    </div>
-                  <% end %>
-                  <%= link_to recipe_path(recipe) do %>
-                    <div class="card-footer">
-                      <small class="text-muted"><%= "Created at: #{recipe.created_at.strftime("%d.%m.%Y, %H:%M")} | by: #{recipe.user.name}"%></small>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
+            <%= render @recipes %>
           </div>
         </div>
       </div>
